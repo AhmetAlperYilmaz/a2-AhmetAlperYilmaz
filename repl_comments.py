@@ -3,6 +3,8 @@ from hashlib import sha256
 print("Welcome to the program which memorises your comments.")
 
 mypassword = "219aeb43c0cc62089487cc77c6603b760edac4d616186e6fea5d0aa8122f49c2"
+#Password Protection has been taken from this link:
+#https://bitbucket.org/damienjadeduff/hashing_example/raw/master/hash_password.py
 
 def create_hash(password):
     pw_bytestring = password.encode()
