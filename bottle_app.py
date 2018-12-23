@@ -30,7 +30,7 @@ def index():
 def static_file_callback(filename):
     return static_file(filename, root='static')
 
-route('/static/index.html', 'GET', static_file_callback)
+route('/', 'GET', index)
 route('/static/<filename>', 'GET', static_file_callback)
 
 
