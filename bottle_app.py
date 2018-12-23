@@ -5,29 +5,18 @@
 ### The landing page for assignment 3 should be at /
 #####################################################################
 
-from bottle import route, run, default_app, debug
+from bottle import route, run, default_app, debug, static_file, template
 
-def htmlify(title,text):
-    page = """
-        <!doctype html>
-        <html lang="en">
-            <head>
-                <meta charset="utf-8" />
-                <title>%s</title>
-            </head>
-            <body>
-            %s
-            </body>
-        </html>
-
-    """ % (title,text)
-    return page
-
+@route("/")
 def index():
-    return htmlify("My lovely website",
-                   "This is going to be an awesome website, when it is finished.")
+    return template("static/index.html")
 
-route('/', 'GET', index)
+def static_file_callback(filename):
+    return static_file(filename, root='static')
+
+route('/static/<filename>', 'GET', static_file_callback)
+
+
 
 #####################################################################
 ### Don't alter the below code.
