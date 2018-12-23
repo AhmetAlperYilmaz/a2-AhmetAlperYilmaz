@@ -1,0 +1,182 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+header
+{
+   background-image: url(futbol.jpg);  
+   height: 1440px;
+   background-size: cover;
+   background-position: center;
+}
+
+.mass
+{
+    float: right;
+    list-style: none;
+    margin-top: 30px;
+}
+
+.mass li
+{
+    display: inline-block;
+}
+
+.mass li a
+{
+   color: rgb(0,200,250);
+   text-decoration: none;
+   padding: 0px 15px;
+   font-family:serif;
+   font-size: 20px;
+}
+
+.mass li a:hover
+{
+     border: thin solid rgb(0,200,250);
+}
+
+body
+{
+    font-family: serif;
+}
+
+.force
+{
+   max-width: 1700px;
+   margin: auto;
+}
+
+h1
+{
+  
+  color: rgb(0,200,250);
+  float: left;
+  margin-top: 40px;
+  font-family: serif, sans-serif;
+  font-size: 50px
+  
+}
+
+h2
+{
+  color: rgb(0,200,250);
+  float: left;
+  margin-top: 20px;
+  font-family: serif, sans-serif;
+  font-size: 22px
+  
+}
+
+strong
+{
+ color: rgb(0,200,250);
+ font-size: 24px
+}
+
+a
+{
+color: rgb(0,200,250)
+}
+
+
+em
+{
+color: rgb(0,200,250);
+font-size: 30px
+}
+
+h3
+{
+color: rgb(0,200,250);
+font-size: 50px;
+padding: 200px
+}
+
+h4
+{
+  color: rgb(0,200,250);
+  float: left;
+  margin-top: 20px;
+  font-family: serif, sans-serif;
+  font-size: 23px
+  
+}
+
+img
+{
+height: 200px;
+width: 400px;
+float: right
+}
+
+h3:after{
+margin: 200px;
+padding: 600px;
+content:url(itu.jpeg)
+}
+
+p
+{
+  
+  color: rgb(0,200,250);
+  float: left;
+  margin-top: 40px;
+  font-family: serif, sans-serif;
+  font-size: 18px
+  
+}
+
+h5
+{
+  
+  color: rgb(0,200,250);
+  float: left;
+  margin-top: 40px;
+  font-family: serif, sans-serif;
+  font-size: 20px
+  
+}
+
+li
+{ 
+color : rgb(0,200,250);
+font-size: 25px;
+font-family: serif;
+
+}
+
+ol
+{
+margin-top: 250px
+
+}
+
+table th {
+text-align: left;
+background-color: #3a6070;
+color: rgb(0,200,250);
+padding: 4px 30px;
+
+
+
+
+
+
+}
+
+table td
+{
+
+padding: 4px 10px;
+border: 2px solid;
+border-color: rgb(0,200,250);
+color: rgb(0,200,250);
+
+
+
+
+}
+
