@@ -23,7 +23,7 @@ def htmlify(title,text):
     return page
 
 def index():
-    return htmlify("My lovely website",
+    return htmlify("",
                    "This is going to be an awesome website, when it is finished.")
 
 
