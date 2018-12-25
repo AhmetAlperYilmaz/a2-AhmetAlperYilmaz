@@ -38,9 +38,9 @@ your_comments_list=""
 def password_for_comment():
     password="""
     <form action="/comment" method="get">
-    <fieldset>passWord:<br>
+    <fieldset>Please enter your password to be able to comment:<br>
     <input type="text" name="password">
-    <input type="submit" value="Password"></fieldset>
+    <input type="submit" value="Enter"></fieldset>
     </form><br>
     """
     links="""<a href="/">Return To Webpage</a>"""
