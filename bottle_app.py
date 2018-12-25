@@ -34,10 +34,7 @@ mypassword = "219aeb43c0cc62089487cc77c6603b760edac4d616186e6fea5d0aa8122f49c2"
 
 your_comments_list=""
 
-def index():
-    return template("index.html")
-
-@route('/password')
+@route('/static/password')
 def password_for_comment():
     password="""
     <form action="/comment" method="get">
@@ -49,7 +46,7 @@ def password_for_comment():
     links="""<a href="/">Return To Webpage</a>"""
     return htmlify("Password for Website",password,links)
 
-@route("/comment")
+@route("/static/comment")
 def comment():
     password_confirm = request["password"]
     mypass = create_hash(password_confirm)
@@ -66,7 +63,7 @@ def comment():
     else:
         return htmlify("Warning","Your password is wrong",links)
 
-@route("/comments")
+@route("/static/comments")
 def comment_of_website():
     comment_op = request["comment"]
     global your_comments_list
@@ -77,8 +74,6 @@ def comment_of_website():
 @route('/static/<filename>')
 def static_server(filename):
     return static_file(filename, root='./')
-
-route('/', "GET", index)
 
 #####################################################################
 ### Don't alter the below code.
