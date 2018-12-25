@@ -34,10 +34,10 @@ mypassword = "219aeb43c0cc62089487cc77c6603b760edac4d616186e6fea5d0aa8122f49c2"
 
 your_comments_list=""
 
-@route('/static/password')
-def password_for_comment():
+@route('/password')
+def password():
     password="""
-    <form action="/comment" method="get">
+    <form action="/comment" method="GET">
     <fieldset>Please enter your password to be able to comment:<br>
     <input type="text" name="password">
     <input type="submit" value="Enter"></fieldset>
@@ -46,11 +46,12 @@ def password_for_comment():
     links="""<a href="/">Return To Webpage</a>"""
     return htmlify("Password for Website",password,links)
 
+
 @route('/comment')
 def comment():
     password_confirm = request.GET["password"]
     mypass = create_hash(password_confirm)
-    mycomment="""
+    comment="""
     <form action="/comments" method="get">
     <fieldset>Your comment:<br>
     <input type="text name="yourcomment"><br>
