@@ -34,7 +34,7 @@ mypassword = "219aeb43c0cc62089487cc77c6603b760edac4d616186e6fea5d0aa8122f49c2"
 
 your_comments_list=""
 
-@route('/password')
+@route('/static/password')
 def password_for_comment():
     password="""
     <form action="/comment" method="get">
@@ -65,9 +65,9 @@ def comment():
 
 @route('/comments')
 def comment_of_website():
-    comment_op = request.GET["comment"]
+    comment_s = request.GET["comment"]
     global your_comments_list
-    your_comments_list = your_comments_list + comment_op
+    your_comments_list = your_comments_list + comment_s
     links="""<a href="/password">Return To Webpage</a>"""
     return htmlify("Commentable Website",your_comments_list,links)
 
