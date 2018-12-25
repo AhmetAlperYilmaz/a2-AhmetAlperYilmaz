@@ -34,12 +34,11 @@ mypassword = "219aeb43c0cc62089487cc77c6603b760edac4d616186e6fea5d0aa8122f49c2"
 
 your_comments_list=""
 
-route('/')
-def website(): 
-    return template('/static/index.html')
+def index():
+    return template("index.html")
 
 @route('/password')
-def password():
+def password_for_comment():
     password="""
     <form action="/comment" method="get">
     <fieldset>passWord:<br>
@@ -47,12 +46,12 @@ def password():
     <input type="submit" value="Password"></fieldset>
     </form><br>
     """
-    links="""<a href="/">Return To Password</a>"""
+    links="""<a href="/">Return To Webpage</a>"""
     return htmlify("Password for Website",password,links)
 
 @route("/comment")
 def comment():
-    password_confirm = request.GET["password"]
+    password_confirm = request["password"]
     mypass = create_hash(password_confirm)
     mycomment="""
     <form action="/comments" method="get">
@@ -61,7 +60,7 @@ def comment():
     <input type="submit" value="submit">
     </fieldset>
     </form> """
-    links="""<a href"/password">Return To Password</a>"""
+    links="""<a href"/password">Return To Webpage</a>"""
     if mypass == mypassword:
         return htmlify("Commentable Website",mycomment,links)
     else:
@@ -69,21 +68,17 @@ def comment():
 
 @route("/comments")
 def comment_of_website():
-    comment_op = request.GET["comment"]
+    comment_op = request["comment"]
     global your_comments_list
     your_comments_list = your_comments_list + comment_op
-    links="""<a href"/password">Return To Password</a>"""
+    links="""<a href="/password">Return To Webpage</a>"""
     return htmlify("Commentable Website",your_comments_list,links)
 
-def static_file_callback(filename):
-    return static_file(filename, root='static')
-
-
 @route('/static/<filename>')
-def server_static(filename):
+def static_server(filename):
     return static_file(filename, root='./')
 
-
+route('/', "GET", index)
 
 #####################################################################
 ### Don't alter the below code.
