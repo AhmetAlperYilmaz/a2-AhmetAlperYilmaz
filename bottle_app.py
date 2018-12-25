@@ -48,7 +48,7 @@ def password_for_comment():
 
 @route("/comment")
 def comment():
-    password_confirm = request.GET["password"]
+    password_confirm = request["password"]
     mypass = create_hash(password_confirm)
     mycomment="""
     <form action="/comments" method="get">
@@ -65,7 +65,7 @@ def comment():
 
 @route("/comments")
 def comment_of_website():
-    comment_op = request.GET["comment"]
+    comment_op = request["comment"]
     global your_comments_list
     your_comments_list = your_comments_list + comment_op
     links="""<a href="/password">Return To Webpage</a>"""
