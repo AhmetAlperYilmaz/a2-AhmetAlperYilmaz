@@ -57,7 +57,7 @@ def comment():
     <input type="submit" value="submit">
     </fieldset>
     </form> """
-    links="""<a href"/password">Return To Webpage</a>"""
+    links="""<a href"/static/password">Return To Webpage</a>"""
     if mypass == mypassword:
         return htmlify("Commentable Website",mycomment,links)
     else:
@@ -68,7 +68,7 @@ def comment_of_website():
     comment_op = request["comment"]
     global your_comments_list
     your_comments_list = your_comments_list + comment_op
-    links="""<a href="/password">Return To Webpage</a>"""
+    links="""<a href="/static/password">Return To Webpage</a>"""
     return htmlify("Commentable Website",your_comments_list,links)
 
 @route('/static/<filename>')
