@@ -37,7 +37,7 @@ your_comments_list=""
 @route("/password")
 def password_for_comment():
     password="""
-    <form action="/comment" method="get">
+    <form action="/static/comment" method="GET">
     <fieldset>Please enter your password to be able to comment:<br>
     <input type="text" name="password">
     <input type="submit" value="Enter"></fieldset>
@@ -46,18 +46,18 @@ def password_for_comment():
     links="""<a href="/">Return To Webpage</a>"""
     return htmlify("Password for Website",password,links)
 
-@route("/comment")
+@route("/static/comment")
 def comment():
     password_confirm = request["password"]
     mypass = create_hash(password_confirm)
     mycomment="""
-    <form action="/comments" method="get">
+    <form action="/comments" method=GET>
     <fieldset>Your comment:<br>
     <input type="text name="yourcomment"><br>
     <input type="submit" value="submit">
     </fieldset>
     </form> """
-    links="""<a href"/password">Return To Webpage</a>"""
+    links="""<a href="/password">Return To Webpage</a>"""
     if mypass == mypassword:
         return htmlify("Commentable Website",mycomment,links)
     else:
