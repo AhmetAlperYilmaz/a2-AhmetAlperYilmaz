@@ -34,10 +34,10 @@ mypassword = "219aeb43c0cc62089487cc77c6603b760edac4d616186e6fea5d0aa8122f49c2"
 
 your_comments_list=""
 
-@route("/static/password")
+@route('/password')
 def password_for_comment():
     password="""
-    <form action="/comment" method="POST">
+    <form action="/comment" method="get">
     <fieldset>Please enter your password to be able to comment:<br>
     <input type="text" name="password">
     <input type="submit" value="Enter"></fieldset>
@@ -46,12 +46,12 @@ def password_for_comment():
     links="""<a href="/">Return To Webpage</a>"""
     return htmlify("Password for Website",password,links)
 
-@route("/comment")
+@route('/comment')
 def comment():
-    password_confirm = request["password"]
+    password_confirm = request.GET["password"]
     mypass = create_hash(password_confirm)
     mycomment="""
-    <form action="/comments" method="POST">
+    <form action="/comments" method="get">
     <fieldset>Your comment:<br>
     <input type="text name="yourcomment"><br>
     <input type="submit" value="submit">
@@ -63,9 +63,9 @@ def comment():
     else:
         return htmlify("Warning","Your password is wrong",links)
 
-@route("/comments")
+@route('/comments')
 def comment_of_website():
-    comment_op = request["comment"]
+    comment_op = request.GET["comment"]
     global your_comments_list
     your_comments_list = your_comments_list + comment_op
     links="""<a href="/password">Return To Webpage</a>"""
