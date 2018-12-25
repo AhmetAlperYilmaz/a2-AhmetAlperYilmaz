@@ -11,14 +11,15 @@ def create_hash(password):
     return sha256(pw_bytestring).hexdigest()
     
 your_comments_list = []
-while(len(your_comments_list >=0)):
+
+while(len(your_comments_list)>=0):
     listing_number = 1
     your_input = input("Please enter your comment or if you want to exit from the program please write 'exit': ")
     
     if (your_input == "exit"):
     	break
     
-    passwordconfirming = input("Please enter your password to memorise your comments.")
+    passwordconfirming = input("Please enter your password to memorise your comments:")
     password_hash = create_hash(passwordconfirming)
     
     if (mypassword == password_hash):
