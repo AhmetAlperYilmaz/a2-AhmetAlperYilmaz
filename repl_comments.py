@@ -28,7 +28,7 @@ while(len(your_comments_list)>=0):
     	print("All of your comments are: ")
     	for one_of_your_comment in your_comments_list:
         	print(str(listing_number) + "-) " + one_of_your_comment)
-        	listing_number += 1
+        	listing_number = listing_number + 1
     else:
         print("This password is wrong, please try again.")
 

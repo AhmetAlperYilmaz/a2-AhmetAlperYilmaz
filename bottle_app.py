@@ -5,20 +5,14 @@
 ### The landing page for assignment 3 should be at /
 #####################################################################
 
-from bottle import route, run, default_app, debug, static_file
+from bottle import route, run, default_app, debug, static_file, template, request, Request
 from hashlib import sha256
-
-mypassword = "219aeb43c0cc62089487cc77c6603b760edac4d616186e6fea5d0aa8122f49c2"
-#Password Protection has been taken from this link:
-#https://bitbucket.org/damienjadeduff/hashing_example/raw/master/hash_password.py
 
 def create_hash(password):
     pw_bytestring = password.encode()
     return sha256(pw_bytestring).hexdigest()
 
-your_comments_list = []
-    
-def htmlify(title,text):
+def htmlify(title,text,link):
     page = """
         <!doctype html>
         <html lang="en">
@@ -28,21 +22,66 @@ def htmlify(title,text):
             </head>
             <body>
             %s
+            %s
             </body>
-            <div><input type="text" style="width: 50"/>><button>Add Comment</button></div>
         </html>
-    """ % (title,text)
+    """ % (title,text,link)
     return page
 
-def index():
-    return htmlify("Commentable Website",
-                   "Welcome to the program which memorises your comments.")
+mypassword = "219aeb43c0cc62089487cc77c6603b760edac4d616186e6fea5d0aa8122f49c2"
+#Password Protection has been taken from this link:
+#https://bitbucket.org/damienjadeduff/hashing_example/raw/master/hash_password.py
+
+your_comments_list=""
+
+route('/')
+def website(): 
+    return template('/static/index.html')
+
+@route('/password')
+def password():
+    password="""
+    <form action="/comment" method="get">
+    <fieldset>passWord:<br>
+    <input type="text" name="password">
+    <input type="submit" value="Password"></fieldset>
+    </form><br>
+    """
+    links="""<a href="/">Return To Password</a>"""
+    return htmlify("Password for Website",password,links)
+
+@route("/comment")
+def comment():
+    password_confirm = request.GET["password"]
+    mypass = create_hash(password_confirm)
+    mycomment="""
+    <form action="/comments" method="get">
+    <fieldset>Your comment:<br>
+    <input type="text name="yourcomment"><br>
+    <input type="submit" value="submit">
+    </fieldset>
+    </form> """
+    links="""<a href"/password">Return To Password</a>"""
+    if mypass == mypassword:
+        return htmlify("Commentable Website",mycomment,links)
+    else:
+        return htmlify("Warning","Your password is wrong",links)
+
+@route("/comments")
+def comment_of_website():
+    comment_op = request.GET["comment"]
+    global your_comments_list
+    your_comments_list = your_comments_list + comment_op
+    links="""<a href"/password">Return To Password</a>"""
+    return htmlify("Commentable Website",your_comments_list,links)
 
 def static_file_callback(filename):
     return static_file(filename, root='static')
 
-route('/', 'GET', index)
-route('/static/<filename>', 'GET', static_file_callback)
+
+@route('/static/<filename>')
+def server_static(filename):
+    return static_file(filename, root='./')
 
 
 
