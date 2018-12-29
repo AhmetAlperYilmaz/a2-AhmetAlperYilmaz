@@ -43,11 +43,7 @@ def password():
     <input type="submit" value="Enter"></fieldset>
     </form><br>
     """
-<<<<<<< HEAD
-    backs="""<a href="/">Return To Webpage</a>"""
-=======
     backs="""<a href="/index.html">Return To Webpage</a>"""
->>>>>>> dcc01da77f979c1dc89bf99d2a6ae3027a296073
     return htmlify("Password for Website",password,backs)
 
 
@@ -64,34 +60,17 @@ def comment():
     </form> """
     backs="""<a href="/password">Return Back</a>"""
     if mypass == mypassword:
-<<<<<<< HEAD
-        return htmlify("Commentable Website",mycomment,backs)
-=======
         return htmlify("Commentable Website",comment,backs)
->>>>>>> dcc01da77f979c1dc89bf99d2a6ae3027a296073
     else:
         return htmlify("Warning","Your password is wrong",backs)
 
 @route('/comments')
 def comment_of_website():
-<<<<<<< HEAD
-    comment_op = request["mycomment"]
-    global your_comments_list
-    your_comments_list = your_comments_list + comment_op
-    backs="""<a href="/password">Return Back</a>"""
-    return htmlify("Commentable Website",your_comments_list,backs)
-=======
     comment_s = request.GET["comment"]
     global your_comments_list
     your_comments_list = your_comments_list + comment_s
-<<<<<<< HEAD
-    links="""<a href="/password">Return To Webpage</a>"""
-    return htmlify("Commentable Website",your_comments_list,links)
->>>>>>> 82fbc617a76b20e048bd2efd5067143f24b8d1c2
-=======
     backs="""<a href="/password">Return Back</a>"""
     return htmlify("Commentable Website",your_comments_list,backs)
->>>>>>> dcc01da77f979c1dc89bf99d2a6ae3027a296073
 
 @route('/static/<filename>')
 def static_server(filename):
