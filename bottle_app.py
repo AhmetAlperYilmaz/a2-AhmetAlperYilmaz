@@ -12,7 +12,7 @@ def create_hash(password):
     pw_bytestring = password.encode()
     return sha256(pw_bytestring).hexdigest()
 
-def htmlify(title,text,link):
+def htmlify(title,text,back):
     page = """
         <!doctype html>
         <html lang="en">
@@ -25,7 +25,7 @@ def htmlify(title,text,link):
             %s
             </body>
         </html>
-    """ % (title,text,link)
+    """ % (title,text,back)
     return page
 
 mypassword = "219aeb43c0cc62089487cc77c6603b760edac4d616186e6fea5d0aa8122f49c2"
@@ -43,8 +43,8 @@ def password_for_comment():
     <input type="submit" value="Enter"></fieldset>
     </form><br>
     """
-    links="""<a href="/">Return To Webpage</a>"""
-    return htmlify("Password for Website",password,links)
+    backs="""<a href="/">Return To Webpage</a>"""
+    return htmlify("Password for Website",password,backs)
 
 @route("/comment")
 def comment():
@@ -57,19 +57,19 @@ def comment():
     <input type="submit" value="submit">
     </fieldset>
     </form> """
-    links="""<a href="/password">Return To Webpage</a>"""
+    backs="""<a href="/password">Return Back</a>"""
     if mypass == mypassword:
-        return htmlify("Commentable Website",mycomment,links)
+        return htmlify("Commentable Website",mycomment,backs)
     else:
-        return htmlify("Warning","Your password is wrong",links)
+        return htmlify("Warning","Your password is wrong",backs)
 
 @route("/comments")
 def comment_of_website():
-    comment_op = request["comment"]
+    comment_op = request["mycomment"]
     global your_comments_list
     your_comments_list = your_comments_list + comment_op
-    links="""<a href="/password">Return To Webpage</a>"""
-    return htmlify("Commentable Website",your_comments_list,links)
+    backs="""<a href="/password">Return Back</a>"""
+    return htmlify("Commentable Website",your_comments_list,backs)
 
 @route('/static/<filename>')
 def static_server(filename):
