@@ -85,6 +85,7 @@ def static_file_callback(filename):
 
 route("/comment","POST",comment)
 route("/comments","POST",comment_of_website)
+route("/","GET",index_html)
 
 #####################################################################
 ### Don't alter the below code.
