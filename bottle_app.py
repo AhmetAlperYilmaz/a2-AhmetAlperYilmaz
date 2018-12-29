@@ -44,14 +44,14 @@ def password():
     <form action="/comment" method="post">
     <fieldset>Please enter your password to be able to comment:<br>
     <input type="text" name="password">
-    <input type="submit" value="Enter"></fieldset>
+    <input type="submit" value="Enter">
     <h1>Did you like my website?"</h1>
-    <input type="radio" name="like" value="male" checked> Perfect<br>
-    <input type="radio" name="like" value="female"> Good<br>
+    <input type="radio" name="like" value="other" checked> Perfect<br>
+    <input type="radio" name="like" value="other"> Good<br>
     <input type="radio" name="like" value="other"> Not bad<br>
     <input type="radio" name="like" value="other"> Bad<br>
     <input type="radio" name="like" value="other"> Awful<br>
-    </form><br>
+    </fieldset></form><br>
     """
     backs="""<a href="/">Return To Webpage</a>"""
     return htmlify("Password for Website",password,backs)
