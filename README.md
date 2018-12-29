@@ -14,4 +14,4 @@ You may need to be a member of the organisation to which this repository belongs
 
 Instructions about this are in the PDF.
 
-Assignment1 Web Page: https://blg101assignment2-ahmetalper.herokuapp.com/static/index.html
+Assignment1 Website: https://blg101assignment2-ahmetalper.herokuapp.com
