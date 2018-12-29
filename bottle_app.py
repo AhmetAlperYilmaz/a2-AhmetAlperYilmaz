@@ -34,9 +34,8 @@ mypassword = "219aeb43c0cc62089487cc77c6603b760edac4d616186e6fea5d0aa8122f49c2"
 
 your_comments_list=""
 
-@route('/')
 def index_html():
-    return template("index.html")
+    return static_file('index.html',root="./")
 
 @route('/password')
 def password():
