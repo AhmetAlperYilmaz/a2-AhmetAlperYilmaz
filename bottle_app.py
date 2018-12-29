@@ -28,10 +28,6 @@ def htmlify(title,text,back):
     """ % (title,text,back)
     return page
 
-@route('/static/<filename>')
-def static_server(filename):
-    return static_file(filename, root='./')
-
 mypassword = "219aeb43c0cc62089487cc77c6603b760edac4d616186e6fea5d0aa8122f49c2"
 #Password Protection has been taken from this link:
 #https://bitbucket.org/damienjadeduff/hashing_example/raw/master/hash_password.py
@@ -75,6 +71,10 @@ def comment_of_website():
     your_comments_list = your_comments_list + comment_s
     backs="""<a href="/password">Return Back</a>"""
     return htmlify("Commentable Website",your_comments_list,backs)
+
+@route('/static/<filename>')
+def static_server(filename):
+    return static_file(filename, root='./')
 
 #####################################################################
 ### Don't alter the below code.
