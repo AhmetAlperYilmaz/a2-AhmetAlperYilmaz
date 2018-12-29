@@ -43,7 +43,7 @@ def password():
     <input type="submit" value="Enter"></fieldset>
     </form><br>
     """
-    backs="""<a href="/static/index.html">Return To Webpage</a>"""
+    backs="""<a href="/">Return To Webpage</a>"""
     return htmlify("Password for Website",password,backs)
 
 
