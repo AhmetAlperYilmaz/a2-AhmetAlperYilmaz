@@ -34,10 +34,14 @@ mypassword = "219aeb43c0cc62089487cc77c6603b760edac4d616186e6fea5d0aa8122f49c2"
 
 your_comments_list=""
 
+@route('/')
+def index_html
+    return template("index.html")
+
 @route('/password')
 def password():
     password="""
-    <form action="/comment" method="get">
+    <form action="/comment" method="post">
     <fieldset>Please enter your password to be able to comment:<br>
     <input type="text" name="password">
     <input type="submit" value="Enter"></fieldset>
@@ -46,13 +50,11 @@ def password():
     backs="""<a href="/">Return To Webpage</a>"""
     return htmlify("Password for Website",password,backs)
 
-
-@route('/comment')
 def comment():
-    password_confirm = request.GET["password"]
+    password_confirm = request.POST["password"]
     mypass = create_hash(password_confirm)
     comment="""
-    <form action="/comments" method="get">
+    <form action="/comments" method="post">
     <fieldset>Your comment:<br>
     <input type="text name="yourcomment"><br>
     <input type="submit" value="submit">
@@ -64,17 +66,19 @@ def comment():
     else:
         return htmlify("Warning","Your password is wrong",backs)
 
-@route('/comments')
 def comment_of_website():
-    comment_s = request.GET["comment"]
+    comment_s = request.POST["comment"]
     global your_comments_list
     your_comments_list = your_comments_list + comment_s
     backs="""<a href="/password">Return Back</a>"""
     return htmlify("Commentable Website",your_comments_list,backs)
 
-@route('/static/<filename>')
+@route('/static/<filename>')                   
 def static_server(filename):
     return static_file(filename, root='./')
+
+route("/comment","POST",comment)
+route("/comments","POST",comment_of_website)
 
 #####################################################################
 ### Don't alter the below code.
