@@ -67,7 +67,7 @@ def comment():
         return htmlify("Warning","Your password is wrong",backs)
 
 def comment_of_website():
-    comment_s = request.POST["comment"]
+    comment_s = request.POST["yourcomment"]
     global your_comments_list
     your_comments_list = your_comments_list + comment_s
     backs="""<a href="/password">Return Back</a>"""
