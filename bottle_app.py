@@ -69,7 +69,7 @@ def comment():
 def comment_of_website():
     comment_s = request.POST["comment"]
     global your_comments_list
-    your_comments_list = your_comments_list + comment_s
+    your_comments_list = your_comments_list + str(comment_s)
     backs="""<a href="/password">Return Back</a>"""
     return htmlify("Commentable Website",your_comments_list,backs)
 
