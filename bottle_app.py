@@ -34,6 +34,7 @@ mypassword = "219aeb43c0cc62089487cc77c6603b760edac4d616186e6fea5d0aa8122f49c2"
 
 your_comments_list=""
 
+@route('/')
 def index_html():
     return template("index.html")
 
@@ -84,7 +85,6 @@ def static_file_callback(filename):
 
 route("/comment","POST",comment)
 route("/comments","POST",comment_of_website)
-route("/","GET",index_html)
 
 #####################################################################
 ### Don't alter the below code.
