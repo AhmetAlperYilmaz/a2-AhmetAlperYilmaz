@@ -47,7 +47,7 @@ def password():
     <input type="submit" value="Enter"></fieldset>
     </form><br>
     """
-    backs="""<a href="/index.html">Return To Webpage</a>"""
+    backs="""<a href="/static/index.html">Return To Webpage</a>"""
     return htmlify("Password for Website",password,backs)
 
 
@@ -56,7 +56,7 @@ def comment():
     password_confirm = request.GET["password"]
     mypass = create_hash(password_confirm)
     comment="""
-    <form action="/static/comments" method="get">
+    <form action="/comments" method="get">
     <fieldset>Your comment:<br>
     <input type="text name="yourcomment"><br>
     <input type="submit" value="submit">
