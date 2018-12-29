@@ -62,7 +62,7 @@ def comment():
     </form> """
     backs="""<a href="/password">Return Back</a>"""
     if mypass == mypassword:
-        return htmlify("Commentable Website",comment_of_website,backs)
+        return htmlify("Commentable Website",comment,backs)
     else:
         return htmlify("Warning","Your password is wrong",backs)
 
