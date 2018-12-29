@@ -45,7 +45,7 @@ def password():
     <fieldset>Please enter your password to be able to comment:<br>
     <input type="text" name="password">
     <input type="submit" value="Enter">
-    <h1>Did you like my website?"</h1>
+    <h1>Did you like my website?</h1>
     <input type="radio" name="like" value="other" checked> Perfect<br>
     <input type="radio" name="like" value="other"> Good<br>
     <input type="radio" name="like" value="other"> Not bad<br>
@@ -80,7 +80,7 @@ def comment_of_website():
     return htmlify("Commentable Website",your_comments_list,backs)
 
 @route('/static/<filename>')                   
-def static_server(filename):
+def static_file_callback(filename):
     return static_file(filename, root='./')
 
 route("/comment","POST",comment)
