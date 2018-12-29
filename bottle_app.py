@@ -56,7 +56,7 @@ def comment():
     comment="""
     <form action="/comments" method="post">
     <fieldset>Your comment:<br>
-    <input type="text name="comment"><br>
+    <input type="text" name="comment"><br>
     <input type="submit" value="submit">
     </fieldset>
     </form> """
