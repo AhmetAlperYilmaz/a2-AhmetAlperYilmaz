@@ -56,7 +56,7 @@ def comment():
     comment="""
     <form action="/comments" method="post">
     <fieldset>Your comment:<br>
-    <input type="text name="yourcomment"><br>
+    <input type="text name="comment"><br>
     <input type="submit" value="submit">
     </fieldset>
     </form> """
@@ -67,7 +67,7 @@ def comment():
         return htmlify("Warning","Your password is wrong",backs)
 
 def comment_of_website():
-    comment_s = request.POST["yourcomment"]
+    comment_s = request.POST["comment"]
     global your_comments_list
     your_comments_list = your_comments_list + comment_s
     backs="""<a href="/password">Return Back</a>"""
